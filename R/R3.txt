@@ -1,0 +1,962 @@
+     ┌────────────────────────────────────────────────────────────────────┐
+     │                        • MobaXterm 20.5 •                          │
+     │            (SSH client, X-server and networking tools)             │
+     │                                                                    │
+     │ ➤ Telnet session to 10.14.0.225                                    │
+     │ ➤ Your DISPLAY is set to 192.168.1.107:0.0                         │
+     │ ➤ For more info, ctrl+click on help or visit our website           │
+     └────────────────────────────────────────────────────────────────────┘
+
+Connected to Dynamips VM "R3" (ID 4, type c3600) - Console port
+Press ENTER to get the prompt.
+ROMMON emulation microcode.
+
+                           Launching IOS image at 0x80008000...
+
+                                                               Smart Init is dis                                                                              abled. IOMEM set to: 5
+
+                        Using iomem percentage: 5
+
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software, 3600 Software (C3640-A3JS-M), Version 12.4(25d), RELEASE SOF                                                                              TWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2010 by Cisco Systems, Inc.
+Compiled Wed 18-Aug-10 06:58 by prod_rel_team
+
+Cisco 3640 (R4700) processor (revision 0xFF) with 124928K/6144K bytes of memory.
+Processor board ID FF1045C5
+R4700 CPU at 100MHz, Implementation 33, Rev 1.2
+4 Ethernet interfaces
+DRAM configuration is 64 bits wide with parity enabled.
+125K bytes of NVRAM.
+8192K bytes of processor board System flash (Read/Write)
+
+SETUP: new interface Ethernet0/0 placed in "shutdown" state
+SETUP: new interface Ethernet0/1 placed in "shutdown" state
+SETUP: new interface Ethernet0/2 placed in "shutdown" state
+SETUP: new interface Ethernet0/3 placed in "shutdown" state
+
+
+Press RETURN to get started!
+
+
+*Mar  1 00:00:11.279: %LINEPROTO-5-UPDOWN: Line protocol on Interface VoIP-Null0                                                                              , changed state to up
+*Mar  1 00:00:11.287: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+*Mar  1 00:00:11.291: %LINK-3-UPDOWN: Interface Ethernet0/1, changed state to up
+*Mar  1 00:00:11.299: %LINK-3-UPDOWN: Interface Ethernet0/2, changed state to up
+*Mar  1 00:00:11.303: %LINK-3-UPDOWN: Interface Ethernet0/3, changed state to up
+*Mar  1 00:00:11.311: %LINEPROTO-5-UPDOWN: Line protocol on Interface IPv6-mpls,                                                                               changed state to up
+*Mar  1 00:00:12.083: %SYS-5-CONFIG_I: Configured from memory by console
+*Mar  1 00:00:12.423: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/                                                                              0, changed state to down
+*Mar  1 00:00:12.427: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/                                                                              1, changed state to down
+*Mar  1 00:00:12.427: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/                                                                              2, changed state to down
+*Mar  1 00:00:12.431: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/                                                                              3, changed state to down
+*Mar  1 00:00:12.599: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, 3600 Software (C3640-A3JS-M), Version 12.4(25d), RELEASE SOF                                                                              TWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2010 by Cisco Systems, Inc.
+Compiled Wed 18-Aug-10 06:58 by prod_rel_team
+*Mar  1 00:00:12.635: %SNMP-5-COLDSTART: SNMP agent on host R3 is undergoing a c                                                                              old start
+*Mar  1 00:00:14.083: %LINK-5-CHANGED: Interface Ethernet0/0, changed state to a                                                                              dministratively down
+*Mar  1 00:00:14.091: %LINK-5-CHANGED: Interface Ethernet0/1, changed state to a                                                                              dministratively down
+*Mar  1 00:00:14.099: %LINK-5-CHANGED: Interface Ethernet0/2, changed state to a                                                                              dministratively down
+*Mar  1 00:00:14.107: %LINK-5-CHANGED: Interface Ethernet0/3, changed state to a                                                                              dministratively down 2020-12-11 16:00:42 awpJZiRdf4TEfevB
+R3#config
+Configuring from terminal, memory, or network [terminal]? t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#in e0/0
+R3(config-if)#ip address 10.0.35.1 255.255.255.252
+R3(config-if)#no shutdown
+R3(config-if)#exi
+*Mar  1 00:02:35.795: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+*Mar  1 00:02:36.795: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+R3(config-if)#exit
+R3(config)#in e0/2
+R3(config-if)#ip address 10.0.23.2 255.255.255.252
+R3(config-if)#no shutdown
+R3(config-if)#
+*Mar  1 00:03:12.039: %LINK-3-UPDOWN: Interface Ethernet0/2, changed state to up
+*Mar  1 00:03:13.039: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/2, changed state to up
+R3(config-if)#exit
+R3(config)#in e0/3
+R3(config-if)#ip address 10.0.34.1 255.255.255.252
+R3(config-if)#no shutdown
+R3(config-if)#
+*Mar  1 00:04:00.671: %LINK-3-UPDOWN: Interface Ethernet0/3, changed state to up
+*Mar  1 00:04:01.671: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/3, changed state to up
+R3(config-if)#in loopback0
+R3(config-if)#ip a
+*Mar  1 00:04:09.683: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+R3(config-if)#ip address 1.1.1.1 255.255.255.255
+R3(config-if)#no shutdown
+R3(config-if)#exit
+R3(config)#in loopback0
+R3(config-if)#no ip address
+R3(config-if)#ip address 3.3.3.3 255.255.255.255
+R3(config-if)#no shutdown
+R3(config-if)#exit
+R3(config)#^Z
+R3#sho
+*Mar  1 00:07:39.663: %SYS-5-CONFIG_I: Configured from console by console
+R3#show ip int brief
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                10.0.35.1       YES manual up                    up
+Ethernet0/1                unassigned      YES unset  administratively down down
+Ethernet0/2                10.0.23.2       YES manual up                    up
+Ethernet0/3                10.0.34.1       YES manual up                    up
+Loopback0                  3.3.3.3         YES manual up                    up
+R3#show cdp neighbor
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+R2               Eth 0/2            159        R S I      3640      Eth 0/2
+R4               Eth 0/3            177        R S I      3640      Eth 0/3
+R5               Eth 0/0            158        R S I      3640      Eth 0/0
+R3#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#router ospf 1
+R3(config-router)#network 10.0.35.0 0.0.0.3 area 0
+R3(config-router)#network 3.3.3.3 0.0.0.0 area 0
+R3(config-router)#exit
+R3(config)#in e0/0
+R3(config-if)#ip ospf network point-to-point
+R3(config-if)#exit
+R3(config)#in e0/2
+R3(config-if)#ip ospf network point-to-point
+R3(config-if)#exit
+R3(config)#in e0/3
+R3(config-if)#ip ospf network point-to-point
+R3(config-if)#exit
+R3(config)#router ospf 1
+R3(config-router)#network 10.0.23.0 0.0.0.3 area 0
+R3(config-router)#network 10.0.34.0 0.0.0.3 area 0
+R3(config-router)#exit
+R3(config)#
+*Mar  1 00:17:57.503: %OSPF-5-ADJCHG: Process 1, Nbr 2.2.2.2 on Ethernet0/2 from LOADING to FULL, Loading Done
+R3(config)#
+*Mar  1 00:18:39.551: %OSPF-5-ADJCHG: Process 1, Nbr 4.4.4.4 on Ethernet0/3 from LOADING to FULL, Loading Done
+R3(config)#
+*Mar  1 00:18:44.891: %OSPF-5-ADJCHG: Process 1, Nbr 4.4.4.4 on Ethernet0/3 from LOADING to FULL, Loading Done
+R3(config)#
+*Mar  1 00:19:28.499: %OSPF-5-ADJCHG: Process 1, Nbr 2.2.2.2 on Ethernet0/2 from LOADING to FULL, Loading Done
+R3(config)#
+*Mar  1 00:19:40.747: %OSPF-5-ADJCHG: Process 1, Nbr 5.5.5.5 on Ethernet0/0 from LOADING to FULL, Loading Done
+R3(config)#in e0/0
+R3(config-if)#ip ospf cost 10
+R3(config-if)#exit
+R3(config)#in e0/2
+R3(config-if)#ip ospf cost 100
+R3(config-if)#exit
+R3(config)#in e0/3
+R3(config-if)#ip ospf cost 10
+R3(config-if)#^Z
+R3#
+*Mar  1 00:21:50.523: %SYS-5-CONFIG_I: Configured from console by console
+R3#show ip ospf interface brief
+Interface    PID   Area            IP Address/Mask    Cost  State Nbrs F/C
+Lo0          1     0               3.3.3.3/32         1     LOOP  0/0
+Et0/3        1     0               10.0.34.1/30       10    P2P   1/1
+Et0/2        1     0               10.0.23.2/30       100   P2P   1/1
+Et0/0        1     0               10.0.35.1/30       10    P2P   1/1
+R3#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#ip cef dist
+                  ^
+% Invalid input detected at '^' marker.
+
+R3(config)#ip cef distributed
+                  ^
+% Invalid input detected at '^' marker.
+
+R3(config)#ip cef
+R3(config)#mpls ip
+R3(config)#in e0/0
+R3(config-if)#mpls ip
+R3(config-if)#exit
+R3(config)#in e0/2
+R3(config-if)#mpls ip
+R3(config-if)#exit
+R3(config)#in e0/3
+R3(config-if)#mpls ip
+R3(config-if)#^Z
+R3#
+*Mar  1 00:27:45.443: %SYS-5-CONFIG_I: Configured from console by console
+R3#
+*Mar  1 00:29:13.451: %LDP-5-NBRCHG: LDP Neighbor 4.4.4.4:0 (1) is UP
+R3#
+*Mar  1 00:29:40.923: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (2) is UP
+R3#
+*Mar  1 00:29:50.251: %LDP-5-NBRCHG: LDP Neighbor 2.2.2.2:0 (3) is UP
+R3#show mpls interfaces
+Interface              IP            Tunnel   Operational
+Ethernet0/0            Yes (ldp)     No       Yes
+Ethernet0/2            Yes (ldp)     No       Yes
+Ethernet0/3            Yes (ldp)     No       Yes
+R3#show mpls ldp neighbor
+    Peer LDP Ident: 4.4.4.4:0; Local LDP Ident 3.3.3.3:0
+        TCP connection: 4.4.4.4.56233 - 3.3.3.3.646
+        State: Oper; Msgs sent/rcvd: 16/16; Downstream
+        Up time: 00:02:04
+        LDP discovery sources:
+          Ethernet0/3, Src IP addr: 10.0.34.2
+        Addresses bound to peer LDP Ident:
+          10.0.24.2       10.0.45.1       10.0.34.2       4.4.4.4
+    Peer LDP Ident: 5.5.5.5:0; Local LDP Ident 3.3.3.3:0
+        TCP connection: 5.5.5.5.14151 - 3.3.3.3.646
+        State: Oper; Msgs sent/rcvd: 15/16; Downstream
+        Up time: 00:01:37
+        LDP discovery sources:
+          Ethernet0/0, Src IP addr: 10.0.35.2
+        Addresses bound to peer LDP Ident:
+          10.0.35.2       10.0.45.2       5.5.5.5
+    Peer LDP Ident: 2.2.2.2:0; Local LDP Ident 3.3.3.3:0
+        TCP connection: 2.2.2.2.646 - 3.3.3.3.54714
+        State: Oper; Msgs sent/rcvd: 15/15; Downstream
+        Up time: 00:01:27
+        LDP discovery sources:
+          Ethernet0/2, Src IP addr: 10.0.23.1
+        Addresses bound to peer LDP Ident:
+          10.0.12.2       10.0.24.1       10.0.23.1       2.2.2.2
+R3#show mpls ldp binding
+  tib entry: 1.1.1.1/32, rev 2
+        local binding:  tag: 16
+        remote binding: tsr: 4.4.4.4:0, tag: 16
+        remote binding: tsr: 5.5.5.5:0, tag: 16
+        remote binding: tsr: 2.2.2.2:0, tag: 16
+  tib entry: 2.2.2.2/32, rev 4
+        local binding:  tag: 17
+        remote binding: tsr: 4.4.4.4:0, tag: 17
+        remote binding: tsr: 5.5.5.5:0, tag: 17
+        remote binding: tsr: 2.2.2.2:0, tag: imp-null
+  tib entry: 3.3.3.3/32, rev 6
+        local binding:  tag: imp-null
+        remote binding: tsr: 4.4.4.4:0, tag: 18
+        remote binding: tsr: 5.5.5.5:0, tag: 18
+        remote binding: tsr: 2.2.2.2:0, tag: 17
+  tib entry: 4.4.4.4/32, rev 8
+        local binding:  tag: 18
+        remote binding: tsr: 4.4.4.4:0, tag: imp-null
+        remote binding: tsr: 5.5.5.5:0, tag: 19
+        remote binding: tsr: 2.2.2.2:0, tag: 18
+  tib entry: 5.5.5.5/32, rev 10
+        local binding:  tag: 19
+        remote binding: tsr: 4.4.4.4:0, tag: 19
+        remote binding: tsr: 5.5.5.5:0, tag: imp-null
+        remote binding: tsr: 2.2.2.2:0, tag: 19
+  tib entry: 10.0.12.0/30, rev 12
+        local binding:  tag: 20
+        remote binding: tsr: 4.4.4.4:0, tag: 20
+        remote binding: tsr: 5.5.5.5:0, tag: 20
+        remote binding: tsr: 2.2.2.2:0, tag: imp-null
+  tib entry: 10.0.23.0/30, rev 16
+        local binding:  tag: imp-null
+        remote binding: tsr: 4.4.4.4:0, tag: 21
+        remote binding: tsr: 5.5.5.5:0, tag: 22
+        remote binding: tsr: 2.2.2.2:0, tag: imp-null
+  tib entry: 10.0.24.0/30, rev 14
+        local binding:  tag: 21
+        remote binding: tsr: 4.4.4.4:0, tag: imp-null
+        remote binding: tsr: 5.5.5.5:0, tag: 21
+        remote binding: tsr: 2.2.2.2:0, tag: imp-null
+  tib entry: 10.0.34.0/30, rev 20
+        local binding:  tag: imp-null
+        remote binding: tsr: 4.4.4.4:0, tag: imp-null
+        remote binding: tsr: 5.5.5.5:0, tag: 23
+        remote binding: tsr: 2.2.2.2:0, tag: 21
+  tib entry: 10.0.35.0/30, rev 22
+        local binding:  tag: imp-null
+        remote binding: tsr: 4.4.4.4:0, tag: 22
+        remote binding: tsr: 5.5.5.5:0, tag: imp-null
+        remote binding: tsr: 2.2.2.2:0, tag: 22
+  tib entry: 10.0.45.0/30, rev 18
+        local binding:  tag: 22
+        remote binding: tsr: 4.4.4.4:0, tag: imp-null
+        remote binding: tsr: 5.5.5.5:0, tag: imp-null
+        remote binding: tsr: 2.2.2.2:0, tag: 20
+R3#show mpls forwarding-table
+Local  Outgoing    Prefix            Bytes tag  Outgoing   Next Hop
+tag    tag or VC   or Tunnel Id      switched   interface
+16     16          1.1.1.1/32        0          Et0/3      10.0.34.2
+17     17          2.2.2.2/32        0          Et0/3      10.0.34.2
+18     Pop tag     4.4.4.4/32        0          Et0/3      10.0.34.2
+19     Pop tag     5.5.5.5/32        0          Et0/0      10.0.35.2
+20     20          10.0.12.0/30      0          Et0/3      10.0.34.2
+21     Pop tag     10.0.24.0/30      0          Et0/3      10.0.34.2
+22     Pop tag     10.0.45.0/30      0          Et0/0      10.0.35.2
+       Pop tag     10.0.45.0/30      0          Et0/3      10.0.34.2
+R3#show mpls forwarding-table 10.0.34.0 detail
+Local  Outgoing    Prefix            Bytes tag  Outgoing   Next Hop
+tag    tag or VC   or Tunnel Id      switched   interface
+R3#show mpls forwarding-table 10.0.12.0 detail
+Local  Outgoing    Prefix            Bytes tag  Outgoing   Next Hop
+tag    tag or VC   or Tunnel Id      switched   interface
+20     20          10.0.12.0/30      0          Et0/3      10.0.34.2
+        MAC/Encaps=14/18, MRU=1500, Tag Stack{20}
+        CC0068920003CC04689200038847 00014000
+        No output feature configured
+    Per-packet load-sharing
+R3#traceroute 5.5.5.5
+
+Type escape sequence to abort.
+Tracing the route to 5.5.5.5
+
+  1 10.0.35.2 264 msec 228 msec 48 msec
+R3#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#router ospf 1
+R3(config-router)#mpls traffic-eng area 0
+R3(config-router)#mpls traffic-eng router-id loopback0
+R3(config-router)#exit
+R3(config)#mpls traffic-eng tunnels
+R3(config)#in e0/0
+R3(config-if)#mpls traffic-eng tunnels
+R3(config-if)#exi
+R3(config)#in e0/2
+R3(config-if)#mpls traffic-eng tunnels
+R3(config-if)#exi
+R3(config)#in e0/3
+R3(config-if)#mpls traffic-eng tunnels
+R3(config-if)#exit
+R3(config)#in e0/0
+R3(config-if)#ip rsvp bandw 512
+R3(config-if)#exi
+R3(config)#in e0/2
+R3(config-if)#ip rsvp bandw 512
+R3(config-if)#exi
+R3(config)#in e0/3
+R3(config-if)#ip rsvp bandw 512
+R3(config-if)#exi
+R3(config)#in e0/2
+R3(config-if)#ip rsvp bandw 64
+R3(config-if)#^Z
+R3#
+*Mar  1 01:03:05.155: %SYS-5-CONFIG_I: Configured from console by console
+R3#
+*Mar  1 01:03:20.167: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (2) is DOWN (Discovery Hello Hold Timer expired)
+R3#
+*Mar  1 01:03:29.563: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (2) is UP
+R3#
+*Mar  1 01:03:44.567: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (2) is DOWN (Discovery Hello Hold Timer expired)
+R3#
+*Mar  1 01:03:51.819: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (2) is UP
+R3#
+*Mar  1 01:04:08.691: %LDP-5-NBRCHG: LDP Neighbor 2.2.2.2:0 (3) is DOWN (Received error notification from peer: Holddown time expired)
+R3#
+*Mar  1 01:04:10.067: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (2) is DOWN (Received error notification from peer: Holddown time expired)
+R3#
+*Mar  1 01:04:11.195: %LDP-5-NBRCHG: LDP Neighbor 4.4.4.4:0 (1) is DOWN (Received error notification from peer: Holddown time expired)
+R3#
+*Mar  1 01:04:16.847: %LDP-5-NBRCHG: LDP Neighbor 2.2.2.2:0 (3) is UP
+*Mar  1 01:04:16.851: %LDP-5-NBRCHG: LDP Neighbor 4.4.4.4:0 (4) is UP
+R3#
+*Mar  1 01:04:23.235: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3#
+*Mar  1 01:05:45.519: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Discovery Hello Hold Timer expired)
+R3#
+*Mar  1 01:06:10.659: %OSPF-5-ADJCHG: Process 1, Nbr 5.5.5.5 on Ethernet0/0 from FULL to DOWN, Neighbor Down: Dead timer expired
+R3#
+*Mar  1 01:06:15.475: %OSPF-5-ADJCHG: Process 1, Nbr 5.5.5.5 on Ethernet0/0 from LOADING to FULL, Loading Done
+R3#
+*Mar  1 01:06:30.327: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#in e0/2
+R3(config-if)#ip rsvp bandw 512
+R3(config-if)#exi
+R3(config)#
+*Mar  1 01:09:37.491: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Discovery Hello Hold Timer expired)
+R3(config)#
+*Mar  1 01:09:43.835: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3(config)#
+*Mar  1 01:11:54.611: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Discovery Hello Hold Timer expired)
+R3(config)#
+*Mar  1 01:12:01.651: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3(config)#
+*Mar  1 01:12:39.559: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Discovery Hello Hold Timer expired)
+R3(config)#
+*Mar  1 01:12:57.519: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3(config)#
+*Mar  1 01:15:03.791: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Discovery Hello Hold Timer expired)
+R3(config)#
+*Mar  1 01:15:13.011: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3(config)#
+*Mar  1 01:20:38.927: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Discovery Hello Hold Timer expired)
+R3(config)#show ip ospf mpls traffic-eng link
+             ^
+% Invalid input detected at '^' marker.
+
+R3(config)#
+*Mar  1 01:20:49.855: %LDP-5-NBRCHG: LDP Neighbor 2.2.2.2:0 (3) is DOWN (Received error notification from peer: Holddown time expired)
+*Mar  1 01:20:49.859: %LDP-5-NBRCHG: LDP Neighbor 4.4.4.4:0 (4) is DOWN (Received error notification from peer: Holddown time expired)
+R3(config)#
+*Mar  1 01:20:55.591: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3(config)#
+*Mar  1 01:20:56.847: %LDP-5-NBRCHG: LDP Neighbor 2.2.2.2:0 (2) is UP
+*Mar  1 01:20:57.599: %LDP-5-NBRCHG: LDP Neighbor 4.4.4.4:0 (5) is UP
+R3(config)#^Z
+R3#
+*Mar  1 01:21:18.491: %SYS-5-CONFIG_I: Configured from console by console
+R3#show ip ospf mpls traffic-eng link
+
+            OSPF Router with ID (3.3.3.3) (Process ID 1)
+
+  Area 0 has 3 MPLS TE links. Area instance is 28.
+
+  Links in hash bucket 9.
+    Link is associated with fragment 0. Link instance is 28
+      Link connected to Point-to-Point network
+      Link ID : 5.5.5.5
+      Interface Address : 10.0.35.1
+      Neighbor Address : 10.0.35.2
+      Admin Metric te: 10 igp: 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 64000       Priority 3 : 64000
+      Priority 4 : 64000       Priority 5 : 64000
+      Priority 6 : 64000       Priority 7 : 64000
+      Affinity Bit : 0x0
+    Link is associated with fragment 2. Link instance is 28
+      Link connected to Point-to-Point network
+      Link ID : 4.4.4.4
+      Interface Address : 10.0.34.1
+      Neighbor Address : 10.0.34.2
+      Admin Metric te: 10 igp: 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+
+  Links in hash bucket 16.
+    Link is associated with fragment 1. Link instance is 28
+      Link connected to Point-to-Point network
+      Link ID : 2.2.2.2
+      Interface Address : 10.0.23.2
+      Neighbor Address : 10.0.23.1
+      Admin Metric te: 100 igp: 100
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+R3#show ip ospf database opaque-area
+
+            OSPF Router with ID (3.3.3.3) (Process ID 1)
+
+                Type-10 Opaque Link Area Link States (Area 0)
+
+  LS age: 82
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.0
+  Opaque Type: 1
+  Opaque ID: 0
+  Advertising Router: 1.1.1.1
+  LS Seq Number: 80000012
+  Checksum: 0x2116
+  Length: 140
+  Fragment number : 0
+
+    MPLS TE router ID : 1.1.1.1
+
+    Link connected to Point-to-Point network
+      Link ID : 2.2.2.2
+      Interface Address : 10.0.12.1
+      Neighbor Address : 10.0.12.2
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 90
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.0
+  Opaque Type: 1
+  Opaque ID: 0
+  Advertising Router: 2.2.2.2
+  LS Seq Number: 8000000E
+  Checksum: 0xB284
+  Length: 140
+  Fragment number : 0
+
+    MPLS TE router ID : 2.2.2.2
+
+    Link connected to Point-to-Point network
+      Link ID : 1.1.1.1
+      Interface Address : 10.0.12.2
+      Neighbor Address : 10.0.12.1
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 224
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.0
+  Opaque Type: 1
+  Opaque ID: 0
+  Advertising Router: 3.3.3.3
+  LS Seq Number: 8000000A
+  Checksum: 0xBE6
+  Length: 140
+  Fragment number : 0
+
+    MPLS TE router ID : 3.3.3.3
+
+    Link connected to Point-to-Point network
+      Link ID : 5.5.5.5
+      Interface Address : 10.0.35.1
+      Neighbor Address : 10.0.35.2
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 64000       Priority 3 : 64000
+      Priority 4 : 64000       Priority 5 : 64000
+      Priority 6 : 64000       Priority 7 : 64000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 772
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.0
+  Opaque Type: 1
+  Opaque ID: 0
+  Advertising Router: 4.4.4.4
+  LS Seq Number: 80000009
+  Checksum: 0x28E4
+  Length: 140
+  Fragment number : 0
+
+    MPLS TE router ID : 4.4.4.4
+
+    Link connected to Point-to-Point network
+      Link ID : 2.2.2.2
+      Interface Address : 10.0.24.2
+      Neighbor Address : 10.0.24.1
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 64000       Priority 3 : 64000
+      Priority 4 : 64000       Priority 5 : 64000
+      Priority 6 : 64000       Priority 7 : 64000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 95
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.0
+  Opaque Type: 1
+  Opaque ID: 0
+  Advertising Router: 5.5.5.5
+  LS Seq Number: 8000000A
+  Checksum: 0xBA1A
+  Length: 140
+  Fragment number : 0
+
+    MPLS TE router ID : 5.5.5.5
+
+    Link connected to Point-to-Point network
+      Link ID : 4.4.4.4
+      Interface Address : 10.0.45.2
+      Neighbor Address : 10.0.45.1
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 737
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.1
+  Opaque Type: 1
+  Opaque ID: 1
+  Advertising Router: 2.2.2.2
+  LS Seq Number: 80000009
+  Checksum: 0xED3B
+  Length: 132
+  Fragment number : 1
+
+    Link connected to Point-to-Point network
+      Link ID : 4.4.4.4
+      Interface Address : 10.0.24.1
+      Neighbor Address : 10.0.24.2
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 64000       Priority 3 : 64000
+      Priority 4 : 64000       Priority 5 : 64000
+      Priority 6 : 64000       Priority 7 : 64000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 101
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.1
+  Opaque Type: 1
+  Opaque ID: 1
+  Advertising Router: 3.3.3.3
+  LS Seq Number: 80000008
+  Checksum: 0x5E20
+  Length: 132
+  Fragment number : 1
+
+    Link connected to Point-to-Point network
+      Link ID : 2.2.2.2
+      Interface Address : 10.0.23.2
+      Neighbor Address : 10.0.23.1
+      Admin Metric : 100
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 100
+
+    Number of Links : 1
+
+  LS age: 101
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.1
+  Opaque Type: 1
+  Opaque ID: 1
+  Advertising Router: 4.4.4.4
+  LS Seq Number: 8000000D
+  Checksum: 0x6E83
+  Length: 132
+  Fragment number : 1
+
+    Link connected to Point-to-Point network
+      Link ID : 5.5.5.5
+      Interface Address : 10.0.45.1
+      Neighbor Address : 10.0.45.2
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 784
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.1
+  Opaque Type: 1
+  Opaque ID: 1
+  Advertising Router: 5.5.5.5
+  LS Seq Number: 80000009
+  Checksum: 0x12F8
+  Length: 132
+  Fragment number : 1
+
+    Link connected to Point-to-Point network
+      Link ID : 3.3.3.3
+      Interface Address : 10.0.35.2
+      Neighbor Address : 10.0.35.1
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 64000       Priority 3 : 64000
+      Priority 4 : 64000       Priority 5 : 64000
+      Priority 6 : 64000       Priority 7 : 64000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 108
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.2
+  Opaque Type: 1
+  Opaque ID: 2
+  Advertising Router: 2.2.2.2
+  LS Seq Number: 8000000C
+  Checksum: 0xC4B4
+  Length: 132
+  Fragment number : 2
+
+    Link connected to Point-to-Point network
+      Link ID : 3.3.3.3
+      Interface Address : 10.0.23.1
+      Neighbor Address : 10.0.23.2
+      Admin Metric : 100
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 100
+
+    Number of Links : 1
+
+  LS age: 108
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.2
+  Opaque Type: 1
+  Opaque ID: 2
+  Advertising Router: 3.3.3.3
+  LS Seq Number: 80000009
+  Checksum: 0x5FB3
+  Length: 132
+  Fragment number : 2
+
+    Link connected to Point-to-Point network
+      Link ID : 4.4.4.4
+      Interface Address : 10.0.34.1
+      Neighbor Address : 10.0.34.2
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+  LS age: 115
+  Options: (No TOS-capability, DC)
+  LS Type: Opaque Area Link
+  Link State ID: 1.0.0.2
+  Opaque Type: 1
+  Opaque ID: 2
+  Advertising Router: 4.4.4.4
+  LS Seq Number: 80000007
+  Checksum: 0xEA2A
+  Length: 132
+  Fragment number : 2
+
+    Link connected to Point-to-Point network
+      Link ID : 3.3.3.3
+      Interface Address : 10.0.34.2
+      Neighbor Address : 10.0.34.1
+      Admin Metric : 10
+      Maximum bandwidth : 1250000
+      Maximum reservable bandwidth : 64000
+      Number of Priority : 8
+      Priority 0 : 64000       Priority 1 : 64000
+      Priority 2 : 32000       Priority 3 : 32000
+      Priority 4 : 32000       Priority 5 : 32000
+      Priority 6 : 32000       Priority 7 : 32000
+      Affinity Bit : 0x0
+      IGP Metric : 10
+
+    Number of Links : 1
+
+R3#
+*Mar  1 01:26:02.051: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Discovery Hello Hold Timer expired)
+R3#
+*Mar  1 01:26:15.283: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is UP
+R3#show running-config
+Building configuration...
+
+Current configuration : 1575 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+no ip icmp rate-limit unreachable
+!
+!
+ip cef
+no ip domain lookup
+!
+!
+ --More--
+*Mar  1 01:37:08.003: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (1) is DOWN (Received error notification from peer: Holddown time expired)
+*Mar  1 01:37:08.007: %LDP-5-NBRCHG: LDP Neighbor 2.2.2.2:0 (2) is DOWN (Received error notification from peer: Holddown time expired)
+ --More--
+*Mar  1 01:37:18.335: %LDP-5-NBRCHG: LDP Neighbor 2.2.2.2:0 (1) is UP
+ --More--
+*Mar  1 01:37:20.907: %LDP-5-NBRCHG: LDP Neighbor 5.5.5.5:0 (2) is UP
+mpls traffic-eng tunnels
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+!
+!
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
+!
+interface Ethernet0/0
+ ip address 10.0.35.1 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf cost 10
+ half-duplex
+ mpls ip
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth 512
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+ half-duplex
+!
+interface Ethernet0/2
+ ip address 10.0.23.2 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf cost 100
+ half-duplex
+ mpls ip
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth 512
+!
+interface Ethernet0/3
+ ip address 10.0.34.1 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf cost 10
+ half-duplex
+ mpls ip
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth 512
+!
+!
+router ospf 1
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng area 0
+ log-adjacency-changes
+ network 3.3.3.3 0.0.0.0 area 0
+ network 10.0.23.0 0.0.0.3 area 0
+ network 10.0.34.0 0.0.0.3 area 0
+ network 10.0.35.0 0.0.0.3 area 0
+!
+no ip http server
+ip forward-protocol nd
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+banner motd ^C 2020-12-11 16:00:42 awpJZiRdf4TEfevB ^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+!
+!
+end
+
+R3#
