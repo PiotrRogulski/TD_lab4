@@ -19,7 +19,7 @@
 \renewcommand*{\thesection}{\Alph{section}}
 
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
-\setminted{frame=single, bgcolor=bg, breaklines=true}
+\setminted{frame=single, bgcolor=bg, breaklines=true, autogobble}
 
 \IfFontExistsTF{JetBrainsMono-Regular}{
     \setmonofont{JetBrainsMono}[
@@ -85,7 +85,25 @@
 
 \section{Protokół OSPF}
 
+Zanim skonfigurowany zostanie MPLS, w sieci musi być uruchomiony protokół trasowania (OSPF). W tym celu, na każdym routerze należy uruchomić proces OSPF i dodać do niego odpowiednie podsieci (w tym podsieci loopback):
+\begin{minted}[label=Konfiguracja OSPF]{text}
+    #router ospf 1
+    #network <adres ip sieci> <maska wildcard> area 0
+\end{minted}
+
+Wszystkie interfejsy (oprócz interfejsów loopback) powinny pracować w trybie point-to-point. Jest to realizowane za pomocą polecenia \mintinline{text}{ip ospf network point-to-point}. Koszt łącza między routerami R2 oraz R3 został ustawiony na wartość 100 a wszystkie pozostałe na wartość 10 za pomocą polecenia \mintinline{text}{ip ospf cost <koszt>}.
+
+% TODO: output traceroute z R1 do R5
+
 \section{Protokół LDP}
+
+W celu zwiększenia wydajności, przed uruchomieniem protokołu MPLS włączony został Cisco Express Forwarding. MPLS należy uruchomić i w kontekście globalnym i w kontekście każdego z interfejsów.
+\begin{minted}[label=Konfiguracja MPLS]{text}
+    #ip cef
+    #mpls ip
+    #interface <numer interfejsu>
+    #mpls ip
+\end{minted}
 
 \section{Weryfikacja MPLS/LDP}
 
