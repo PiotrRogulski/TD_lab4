@@ -93,6 +93,8 @@ Zanim skonfigurowany zostanie MPLS, w sieci musi być uruchomiony protokół tra
 
 Wszystkie interfejsy (oprócz interfejsów loopback) powinny pracować w trybie point-to-point. Jest to realizowane za pomocą polecenia \mintinline{text}{ip ospf network point-to-point}. Koszt łącza między routerami R2 oraz R3 został ustawiony na wartość 100 a wszystkie pozostałe na wartość 10 za pomocą polecenia \mintinline{text}{ip ospf cost <koszt>}.
 
+Korzystając z  \mintinline{text}{traceroute 5.5.5.5} można ustalić trasę OSPF z R1 do R5. Ponieważ koszt łącza R2-R3 jest ustawiony na 100 to trasa przebiega przez R1-R2-R4-R5.
+\inputminted[label=Traceroute R1 do R5, firstline=175, lastline=182]{text}{R/R1.txt}
 % TODO: output traceroute z R1 do R5 + wyjaśnienie
 
 \section{Protokół LDP}
@@ -116,11 +118,19 @@ Po ustawieniu MPLS należy upewnić się, że konfiguracja przebiegła pomyślni
     #show mpls forwarding-table <prefix> detail
 \end{minted}
 
+Poniżej przedstawione są wywołania tych komend na routerze R2. Komenda \mintinline{text}{show mpls interfaces} pokazuje interfejsy R2 objęte przez MPLS, czyli zgodnie z ustawieniami wszystkie interfejsy R2. Komenda \mintinline{text}{show mpls ldp neighbor} pokazuje informacje o sąsiadach LDP routera R2, są to routery R1, R3 i R4 o LDP identyfikatorach odpowiednio 1.1.1.1, 3.3.3.3 i 4.4.4.4. Wpisy w bazie LIB przedstawione są przez wywołanie \mintinline{text}{show mpls ldp neighbor}, są to wszystkie podsieci w sieci. Bazę LFIB pokazuje z kolei wywołanie \mintinline{text}{show mpls forwarding-table}.
+\inputminted[label=Weryfikacja MPLS/LDP na R2, firstline=204, lastline=307]{text}{R/R2.txt}
 % TODO: output poleceń na R2 + wyjaśnienie
 
 \section{Weryfikacja ścieżek}
 
+Analizując forwarding table na R1, w drodze do R5 next hopem jest 10.0.12.2, z forwarding-table na R2 wiadomo, że next hopem do R5 jest 10.0.24.2, z R4 next hopem jest 10.0.45.2. Zgadza się to z trasą pokazywaną przez traceroute. Z analizy forwarding table na wszystkich routerach R5 jest oznaczone (na każdym routerze przez etykietę 19.
+\inputminted[label=Forwarding table R1, firstline=253, lastline=272]{text}{R/R1.txt}
+
 \section{Podstawowe funkcje inżynierii ruchu}
+
+Stworzony tunel R1-R5 wiedzie przez 10.0.12.2, 10.0.23.2 i 10.0.35.2, tj. routery R2, R3 i R5. Nieobranie trasy R2-R4-R5 wynika tutaj z niskiej przepustowości odcinka R2-R4.
+\inputminted[label=MPLS tunel R1-R5, firstline=309, lastline=357]{text}{R/R1.txt}
 
 
 
