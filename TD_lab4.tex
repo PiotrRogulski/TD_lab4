@@ -93,7 +93,7 @@ Zanim skonfigurowany zostanie MPLS, w sieci musi być uruchomiony protokół tra
 
 Wszystkie interfejsy (oprócz interfejsów loopback) powinny pracować w trybie point-to-point. Jest to realizowane za pomocą polecenia \mintinline{text}{ip ospf network point-to-point}. Koszt łącza między routerami R2 oraz R3 został ustawiony na wartość 100 a wszystkie pozostałe na wartość 10 za pomocą polecenia \mintinline{text}{ip ospf cost <koszt>}.
 
-% TODO: output traceroute z R1 do R5
+% TODO: output traceroute z R1 do R5 + wyjaśnienie
 
 \section{Protokół LDP}
 
@@ -106,6 +106,17 @@ W celu zwiększenia wydajności, przed uruchomieniem protokołu MPLS włączony 
 \end{minted}
 
 \section{Weryfikacja MPLS/LDP}
+
+Po ustawieniu MPLS należy upewnić się, że konfiguracja przebiegła pomyślnie używając następujących poleceń:
+\begin{minted}[label=Weryfikacja konfiguracji MPLS i LDP]{text}
+    #show mpls interfaces
+    #show mpls ldp neighbor
+    #show mpls ldp binding
+    #show mpls forwarding-table
+    #show mpls forwarding-table <prefix> detail
+\end{minted}
+
+% TODO: output poleceń na R2 + wyjaśnienie
 
 \section{Weryfikacja ścieżek}
 
