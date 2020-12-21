@@ -95,11 +95,10 @@ Wszystkie interfejsy (oprócz interfejsów loopback) powinny pracować w trybie 
 
 Korzystając z  \mintinline{text}{traceroute 5.5.5.5} można ustalić trasę OSPF z R1 do R5. Ponieważ koszt łącza R2-R3 jest ustawiony na 100 to trasa przebiega przez R1-R2-R4-R5.
 \inputminted[label=Traceroute R1 do R5, firstline=175, lastline=182]{text}{R/R1.txt}
-% TODO: output traceroute z R1 do R5 + wyjaśnienie
 
 \section{Protokół LDP}
 
-W celu zwiększenia wydajności, przed uruchomieniem protokołu MPLS włączony został Cisco Express Forwarding. MPLS należy uruchomić i w kontekście globalnym i w kontekście każdego z interfejsów.
+W celu zwiększenia wydajności, przed uruchomieniem protokołu MPLS włączony został Cisco Express Forwarding. MPLS należy uruchomić zarówno i w kontekście globalnym, jak i w kontekście każdego z interfejsów.
 \begin{minted}[label=Konfiguracja MPLS]{text}
     #ip cef
     #mpls ip
@@ -118,27 +117,26 @@ Po ustawieniu MPLS należy upewnić się, że konfiguracja przebiegła pomyślni
     #show mpls forwarding-table <prefix> detail
 \end{minted}
 
-Poniżej przedstawione są wywołania tych komend na routerze R2. Komenda \mintinline{text}{show mpls interfaces} pokazuje interfejsy R2 objęte przez MPLS, czyli zgodnie z ustawieniami wszystkie interfejsy R2. Komenda \mintinline{text}{show mpls ldp neighbor} pokazuje informacje o sąsiadach LDP routera R2, są to routery R1, R3 i R4 o LDP identyfikatorach odpowiednio 1.1.1.1, 3.3.3.3 i 4.4.4.4. Wpisy w bazie LIB przedstawione są przez wywołanie \mintinline{text}{show mpls ldp neighbor}, są to wszystkie podsieci w sieci. Bazę LFIB pokazuje z kolei wywołanie \mintinline{text}{show mpls forwarding-table}.
+Poniżej przedstawione są wywołania tych komend na routerze R2. Wywołanie polecenia \mintinline{text}{show mpls interfaces} pokazuje interfejsy R2 objęte przez MPLS, czyli zgodnie z ustawieniami wszystkie interfejsy R2. Komenda \mintinline{text}{show mpls ldp neighbor} pokazuje informacje o sąsiadach LDP routera R2, są to routery R1, R3 i R4 o LDP identyfikatorach odpowiednio 1.1.1.1, 3.3.3.3 i 4.4.4.4. Wpisy w bazie LIB przedstawione są przez wywołanie \mintinline{text}{show mpls ldp neighbor}, są to wszystkie podsieci w sieci. Bazę LFIB pokazuje z kolei wywołanie \mintinline{text}{show mpls forwarding-table}.
 \inputminted[label=Weryfikacja MPLS/LDP na R2, firstline=204, lastline=307]{text}{R/R2.txt}
-% TODO: output poleceń na R2 + wyjaśnienie
 
 \section{Weryfikacja ścieżek}
 
-Analizując forwarding table na R1, w drodze do R5 next hopem jest 10.0.12.2, z forwarding-table na R2 wiadomo, że next hopem do R5 jest 10.0.24.2, z R4 next hopem jest 10.0.45.2. Zgadza się to z trasą pokazywaną przez traceroute. Z analizy forwarding table na routerach R5 jest oznaczone (na każdym routerze) przez etykietę 19.
+Analizując forwarding table na R1, w drodze do R5 następnym skokiem jest 10.0.12.2, z forwarding table na R2 wiadomo, że następnym skokiem do R5 jest 10.0.24.2, z R4 następnym skokiem jest 10.0.45.2. Zgadza się to z trasą pokazywaną przez traceroute. Z analizy forwarding table na routerach R5 jest oznaczony (na każdym routerze) przez etykietę 19.
 \inputminted[label=Forwarding table R1, firstline=253, lastline=272]{text}{R/R1.txt}
 
 \section{Podstawowe funkcje inżynierii ruchu}
 
-By wdrożyć MPLS TE należy skonfigurować router id na adres loopback i włączyć MPLS TE dla protokołu routingu przy pomocy komend \mintinline{text}{mpls traffic-eng area 0} i \mintinline{text}{mpls traffic-eng <router id> loopback0}. W dalszej kolejności funkcję inżynierii ruchu trzeba również włączyć na interfejsach i w konfiguracji globalnej, przy pomocy \mintinline{text}{mpls-traffic-eng tunnels}
+By wdrożyć MPLS TE należy skonfigurować router id na adres loopback i włączyć MPLS TE dla protokołu routingu przy pomocy poleceń \mintinline{text}{mpls traffic-eng area 0} oraz \mintinline{text}{mpls traffic-eng <router id> loopback0}. W dalszej kolejności funkcję inżynierii ruchu trzeba również włączyć na interfejsach i w konfiguracji globalnej, przy pomocy \mintinline{text}{mpls-traffic-eng tunnels}
 
-W celu uruchomienia RSVP należy dla każdego interfejsu użyć \mintinline{text}{ip rsvp bandwidth <wartość>}, gdzie <wartość> to przepustowość łącza. Na wszystkich interfejscach poza tym łączącym R2 i R4 przepustowość została ustawiona na 512 kb/s, dla połączenia R2-R4, została ustawiona na 64 kb/s. 
+W celu uruchomienia protokołu RSVP należy na każdym interfejsie wywołać polecenie \mintinline{text}{ip rsvp bandwidth <wartość>}, gdzie <wartość> to przepustowość łącza. Na wszystkich interfejsach poza tym łączącym R2 i R4 przepustowość została ustawiona na 512 kb/s, dla połączenia R2-R4 została ustawiona na 64 kb/s.
 
-Między routerami R1 i R5 został stworzony dynamiczny tunel RSVP TE o przepustowości 256. Na routerze R1 docelowy adres tunelu został ustawiony na adres loopback R5 (5.5.5.5), na R5 adres ten został ustawiony na adres loopback R1 tj. 1.1.1.1.
+Między routerami R1 i R5 został stworzony dynamiczny tunel RSVP TE o przepustowości 256. Na routerze R1 docelowy adres tunelu został ustawiony na adres loopback R5 (5.5.5.5), na R5 adres ten został ustawiony na adres loopback R1, tj. 1.1.1.1.
 
 Stworzony tunel R1-R5 wiedzie przez 10.0.12.2, 10.0.23.2 i 10.0.35.2, tj. routery R2, R3 i R5.
 \inputminted[label=MPLS tunel R1-R5, firstline=309, lastline=357]{text}{R/R1.txt}
 
-Z analizy tablicy routingu OSPF i i tablicy komutacji etykiet MPLS wynika, że dane z R1 do R5 istotnie są przesyłane przez stworzony tunel (oznaczony w interfejsach jako Tunnel1). Trasa tego tunelu nie wiedzie tak jak w przypadku poprzednim przypadku przez R1-R2-R4-R5, ponieważ przepustowośc na łączu R2-R4 jest ograniczona do 64 kb/s. 
+Z analizy tablicy routingu OSPF i tablicy komutacji etykiet MPLS wynika, że dane z R1 do R5 istotnie są przesyłane przez stworzony tunel (oznaczony w interfejsach jako Tunnel1). Trasa tego tunelu nie wiedzie tak jak w poprzednim przypadku przez R1-R2-R4-R5, ponieważ przepustowość na łączu R2-R4 jest ograniczona do 64 kb/s.
 \inputminted[label=show ip route i show mpls forwarding-table dla R1, firstline=362, lastline=406]{text}{R/R1.txt}
 
 Wywołanie \mintinline{text}{traceroute 5.5.5.5} z R1 potwierdza przesyłanie danych nowo utworzonym tunelem.
@@ -150,12 +148,12 @@ Po zmianie przepustowości R2-R4 na 512 kb/s i zmianie przepustowości R2-R3 na 
 W dalszej części zamknięty zostaje tunel R1-R5, wówczas trasa R1-R5 wyznaczana jest przez OSPF, tj. na podstawie najmniejszej metryki, w tym przypadku pozostaje ona bez zmian, tj. R1-R2-R4-R5.
 \inputminted[label=Zamknięcie tunelu R1-R5, firstline=439, lastline=472]{text}{R/R1.txt}
 
-Stworzony zostaje nowy tunel R1-R5 z explicit-path, tj. tunel którego trasa jest z góry narzucona. Konfiguracji kolejnych adresów trasy tunelu można dokonać poprzez \mintinline{text}{ip explicit-path name <nazwa> enable}. Trasa zostaje ustalona na R1-R2-R3-R4-R5, z wywołania \mintinline{text}{traceroute 5.5.5.5} dane przesyłane są powstałym tunelem.
+Stworzony zostaje nowy tunel R1-R5 z explicit-path, tj. tunel, którego trasa jest z góry narzucona. Konfiguracji kolejnych adresów trasy tunelu można dokonać poprzez polecenie \mintinline{text}{ip explicit-path name <nazwa> enable}. Trasa zostaje ustalona na R1-R2-R3-R4-R5, z wywołania \mintinline{text}{traceroute 5.5.5.5} dane przesyłane są powstałym tunelem.
 \inputminted[label=Tunel R1-R5 z explicit-path R1-R2-R3-R4, firstline=521, lastline=538]{text}{R/R1.txt}
 
 Komenda \mintinline{text}{show ip ospf mpls traffic-eng link} pozwala ustalić, do jakich podsieci dany router rozgłasza, w przypadku wywołania na R2 otrzymujemy informacje o rozgłaszaniu przez R2 do podsieci 10.0.12.0/30, 10.0.24.0/30 i 10.0.23.0/30.
 \inputminted[label=show ip ospf mpls traffic-eng link na R2, firstline=456, lastline=508]{text}{R/R2.txt}
 
-Architektura MPLS pozwala również na stworzenie tunelu z luźnymi segmentami. Tunel taki został utworzy z routera R1 do R5 z luźnym segmentem od R5 do R2. Niestety wersja oprogramowania na routerach nie pozwala na uaktywnienie tego tunelu. Po stworzeniu tunelu z loose hops jest on zdefiniowany \mintinline{text}{Admin: up}, lecz nieaktywny \mintinline{text}{Oper: down}.
+Architektura MPLS pozwala również na stworzenie tunelu z luźnymi segmentami. Tunel taki został utworzy z routera R1 do R5 z luźnym segmentem od R5 do R2. Niestety wersja oprogramowania na routerach nie pozwala na uaktywnienie tego tunelu. Po stworzeniu tunelu z loose hops jest on zdefiniowany (\mintinline{text}{Admin: up}), lecz nieaktywny (\mintinline{text}{Oper: down}).
 \inputminted[label=Tunel R5-R1 z loose hops, firstline=1266, lastline=1295]{text}{R/R5.txt}
 \end{document}
